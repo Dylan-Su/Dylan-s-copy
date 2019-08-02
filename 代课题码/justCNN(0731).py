@@ -5,6 +5,18 @@ Created on Tue Jul 16 14:42:30 2019
 
 @author: dylan
 """
+
+
+
+'''
+神经网络层数：四层卷积+四层池化
+迭代次数：500次
+优化器：梯度下降算法
+准确率：42%
+图片数量：3大类，270张。
+优化器：梯度下降算法
+优化器：梯度下降算法
+'''
 import tensorflow as tf
 import matplotlib.pylab as plt
 import numpy as np
@@ -117,9 +129,9 @@ pooling_3d_2=tf.nn.max_pool3d(op2,[1,1,2,2,1],[1,1,2,2,1],padding='VALID')
 op3 = tf.nn.conv3d(pooling_3d_2, filter_2, strides=[1,1,1,1,1], padding='VALID')
 ###########第三层池化
 pooling_3d_3=tf.nn.max_pool3d(op3,[1,1,2,2,1],[1,1,2,2,1],padding='VALID')
-###########第一层卷积
+###########第四层卷积
 op4 = tf.nn.conv3d(pooling_3d_3, filter_2, strides=[1,1,1,1,1], padding='VALID')
-###########第一层池化
+###########第四层池化
 pooling_3d_4=tf.nn.max_pool3d(op4,[1,1,2,2,1],[1,1,2,2,1],padding='VALID')
 
 flatten = tf.layers.flatten(pooling_3d_4)
